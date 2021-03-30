@@ -1,0 +1,46 @@
+public class Mesimdhenesi{
+		private String emri; // readonly
+		private int vitiLindjes;
+		private String angazhimi;
+		
+	//Mesimdhenesi m1 = new Mesimdhenesi("Blerim",1993,"Tutor");
+	
+	public Mesimdhenesi(String emri, int vl, String a){
+		this.emri = emri;
+		vitiLindjes = vl;
+		angazhimi = a;
+	}
+	
+	public String getEmri(){
+		return emri;
+	}
+	public void setVitiLindjes(int vl){
+		vitiLindjes = vl;
+	}
+	public int getVitiLindjes(){
+		return vitiLindjes;
+	}
+	public void setAngazhimi(String a){
+		angazhimi = a;
+	}
+	public String getAngazhimi(){
+		return angazhimi;
+	}
+	
+	public String toString(){
+		return emri + " : " + vitiLindjes
+		+ " - " + angazhimi;	
+	}
+	
+	public boolean equals(Object obj){
+	if(obj instanceof Mesimdhenesi){
+			Mesimdhenesi m = (Mesimdhenesi)obj;
+		if(emri.equals(m.getEmri()) &&
+		vitiLindjes == m.getVitiLindjes())
+			return true;	
+		}	
+		return false;
+	}
+	
+	
+}

@@ -1,0 +1,81 @@
+public class Fakulteti{
+	private String drejtimi;
+	private Mesimdhenesi[] m;
+	private int index;
+	
+	//Fakulteti f = new Fakulteti("SHKI",15);
+	
+	public Fakulteti(String d, int kapaciteti){
+		drejtimi = d;
+		m = new Mesimdhenesi[kapaciteti];
+	}
+	
+	public boolean ekziston(Mesimdhenesi me){
+		for(int i = 0; i < index; i++){
+			if(m[i].equals(me)){
+				return true;
+			}				
+		}
+		return false;
+	}
+
+	public void shtoMesimdhenesin(Mesimdhenesi me){
+		if(me == null){
+			System.out.println("Objekti eshte null");
+			return;
+		}
+		if(index >= m.length){
+			System.out.println("Nuk ka vende te lira ne varg");
+			return;
+		}
+		if(ekziston(me)){
+			System.out.println("Mesimdhenesi ekziston");
+			return;
+		}
+		m[index++] = me;
+	}
+
+	public Mesimdhenesi mesimdhenesiMeIRi(){
+		Mesimdhenesi iRi = null;
+		for(int i = 0; i < index; i++){
+			if(iRi == null || m[i].getVitiLindjes() >= iRi.getVitiLindjes()){
+				iRi = m[i];
+			}
+		}
+		return iRi;
+	}
+	
+	public void shtypAngazhimet(String a){
+			for(int i = 0; i < index; i++){
+				if(m[i].getAngazhimi().equals(a)){
+						System.out.println(m[i]);
+				}	
+			}
+	}
+	
+	public static void main(String[]args){
+		Fakulteti f = new Fakulteti("SHKI",15);
+		Mesimdhenesi m1 = new Mesimdhenesi("Ermal",2000,"Profesor");
+		Mesimdhenesi m2 = new Mesimdhenesi("Filan",1995,"Profesor");
+		Mesimdhenesi m3 = new Mesimdhenesi("Ermal2",1995,"Profesor");
+		Mesimdhenesi m4 = new Mesimdhenesi("Ermal3",1996,"Asistent");
+		Mesimdhenesi m5 = new Mesimdhenesi("Ermal4",2000,"Tutor");
+		
+		f.shtoMesimdhenesin(m1);
+		f.shtoMesimdhenesin(m2);
+		f.shtoMesimdhenesin(m3);
+		f.shtoMesimdhenesin(m4);
+		f.shtoMesimdhenesin(m5);
+		f.shtoMesimdhenesin(m5);
+		
+		System.out.println("Mesimdhenesi me i ri : " + f.mesimdhenesiMeIRi());
+		
+		f.shtypAngazhimet("Profesor");
+		
+		
+	}
+	
+	
+	
+
+}
